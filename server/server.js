@@ -15,9 +15,9 @@ app.use(express.urlencoded({extended: true}));
 
 require('./config/mongoose.config');
 require('./routes/document.route')(app);
-require('./routes/user.route')(app);
+require('./routes/user.route.js')(app);
 
 app.listen(8000, () => console.log(`Listening on port: 8000`));
 
 //node modules: bcrypt, cookie-parser, cors, dotenv, express, jsonwebtoken, mongoose,
-// mongoose-mongoose-unique-validator
+//mongoose-unique-validator
