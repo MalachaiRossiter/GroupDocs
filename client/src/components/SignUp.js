@@ -35,7 +35,7 @@ const SignUp = (props) => {
     }
 
     return(
-        <div className="full-container">
+        <div className="center-page">
             <div className="login-container">
                 <div className='login-header'>
                     <h1>Create Your Account!</h1>
@@ -60,7 +60,7 @@ const SignUp = (props) => {
                     </div>
                     <input type="submit" className='submit-btn'/>
                 </form>
-                <p className='bottom-txt'>Have an account already? <span><Link to={"/login"}>log in!</Link></span></p> 
+                <p className='bottom-txt'>Have an account already? <span><Link to={"/"}>log in!</Link></span></p> 
             </div>
         </div>
     )

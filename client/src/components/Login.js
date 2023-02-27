@@ -34,10 +34,11 @@ const Login = (props) => {
     }
 
     return(
-        <div className="full-container">
+        <div className="center-page">
             <div className="login-container">
                 <div className='login-header'>
-                    <h1>Log In!</h1>
+                    <h1>Log In</h1>
+                    <p>to continue to your documents</p>
                     {/* {errors.map((err, index) => <p key={index} className="error">{err}</p>)} */}
                     {(errors) ? <p className="error"> {errors} </p> : null} 
                 </div>
@@ -52,7 +53,7 @@ const Login = (props) => {
                     </div>
                     <input type="submit" className='submit-btn'/>
                 </form>
-                <p className='bottom-txt'>Don't have an account? <span><Link to={"/signUp"}>Sign Up!</Link></span></p> 
+                <p className='bottom-txt'>Don't have an account? <span><Link to={"/signUp"}>Sign Up!</Link></span></p>
             </div>
         </div>
     )
