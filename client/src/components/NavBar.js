@@ -21,10 +21,10 @@ const NavBar = (props) => {
     return (
         <div className='navbar-container'>
             <div className='navbar'>
-                <Link to={"/"} className='logo'><h2 className='text-2xl bold'>DevBlog</h2></Link>
+                <Link to={"/"} className='logo'><h2 className=''>GroupDocs</h2></Link>
                     <div className='link-container'>
-                        <Link onClick={onClickHandler} className='link-item'><h2>Logout</h2></Link>
-                        <Link to={"/UserBlogs"} className='link-item signup'><h2>View Your Blogs</h2></Link>
+                        <Link to={'/create'} className={'submit-btn'}>Create A Post!</Link>
+                        <Link onClick={onClickHandler} className='logout'>Logout</Link>
                     </div>
             </div>
         </div>

@@ -22,7 +22,6 @@ body {
 
 a {
   text-decoration: none;
-  color:rgb(67, 165, 97);
 }
 
 .error {
@@ -31,11 +30,14 @@ a {
 
 .submit-btn{
   padding: 10px 30px;
+  color: #111;
   background-color:rgb(97, 255, 145);
   border: 0px;
   border-radius: 0.5rem;
 }
 
+
+/* Login & Sign-Up */
 .center-page{
   height: 100vh;
   display: flex;
@@ -73,4 +75,75 @@ a {
   background-color: rgba(255, 255, 255, 0);
   border: #3f3f3f solid 1px;
   border-radius: .5rem;
+}
+
+/* NavBar */
+
+.navbar-container{
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: solid #e2e2e2 1px;
+  position: sticky;
+}
+
+.navbar{
+  width: 50%;
+  margin: 0 auto;
+  padding: 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logo{
+  margin-right: auto;
+}
+
+.link-container{
+  display: flex;
+  align-items: center;
+}
+
+.logout{
+  margin-left: 10px;
+  padding: 10px 30px;
+  color: #111;
+  background-color:rgb(255, 97, 97);
+  border: 0px;
+  border-radius: 0.5rem;
+}
+
+/* Dashboard */
+
+.display-container{
+  width: 55%;
+  margin: 5vh auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.document-container{
+  width: 15vw;
+  height: 20vh;
+  margin: 10px;
+  padding: 10px;
+  color: #111;
+  border: solid 1px #e2e2e2;
+  -webkit-box-shadow: -2px 4px 18px 3px rgba(0,0,0,0.23);
+  -moz-box-shadow: -2px 4px 18px 3px rgba(0,0,0,0.23);
+  box-shadow: -2px 4px 18px 3px rgba(0,0,0,0.23);
+}
+
+.document-container h1{
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.document-container p{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
