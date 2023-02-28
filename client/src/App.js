@@ -34,7 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
           <Route path="/signUp" element={<SignUp loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
-          <Route path="/blog/edit/:id" element={<ProtectedRoute loggedIn={loggedIn}><UpdateDocument/></ProtectedRoute>}/>
+          <Route path="/document/edit/:id" element={<ProtectedRoute loggedIn={loggedIn}><UpdateDocument/></ProtectedRoute>}/>
           <Route path="/dashboard" element={<ProtectedRoute loggedIn={loggedIn}><UserDocuments loggedIn={loggedIn} setLoggedIn={setLoggedIn}/></ProtectedRoute>}/>
           <Route path="/create" element={<ProtectedRoute loggedIn={loggedIn}><CreateDocument/></ProtectedRoute>}/>
         </Routes>

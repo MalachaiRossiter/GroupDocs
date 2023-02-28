@@ -16,7 +16,7 @@ const CreateDocument = (props) => {
             axios.post(`http://localhost:8000/api/document`, {title, body}, {withCredentials: true})
             .then( res => {
                 console.log(res.data);
-                navigate('/');
+                navigate('/dashboard');
             })
             .catch((err) => {
                 console.log(err)
