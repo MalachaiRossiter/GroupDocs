@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const CreateDocument = (props) => {
     
-    const [title, setTitle] = useState("");
+    const [title, setTitle] = useState("Your new Document");
     const [body, setBody] = useState("");
     const [errors, setErrors] = useState([]);
 
@@ -30,22 +30,24 @@ const CreateDocument = (props) => {
     }
 
     return (
-        <div className="display-container">
-            <div className="blog-container blog-single">
-                <h1>Create A New Blog!</h1>
-                {errors.map((err, index) => <p key={index} className="errors">{err}</p>)}
-                <form onSubmit={onSubmitHandler} className="login-form">
-                    <div className='form-row'>
-                        <label>Title</label>
-                        <input type="text" onChange={(e) => setTitle(e.target.value)}/>
+        <div className='background'>
+            <form onSubmit={onSubmitHandler} className="login-form">
+                <div className='navbar-container'>
+                    <div className='navbar'>
+                        <div className='nav-left'>
+                            <Link to={"/"}><h2 className='logo'>GroupDocs</h2></Link>
+                            <input type="text" value={title} className='title-input' onChange={(e) => setTitle(e.target.value)}/>
+                        </div>
+                        <div className='link-container'>
+                        <input type="submit" className='submit-btn' value="Save"/>
                     </div>
-                    <div className='form-row'>
-                        <label>Body</label>
-                        <textarea rows="15" onChange={(e) => setBody(e.target.value)}/>
                     </div>
-                    <input type="submit" className='submit-btn'/>
+                </div>
+                <div className='writing-container'>
+                    {errors.map((err, index) => <p key={index} className="error">{err}</p>)}
+                        <textarea rows="15" value={body} onChange={(e) => setBody(e.target.value)}/>
+                </div>
                 </form>
-            </div>
         </div>
     )
 } 

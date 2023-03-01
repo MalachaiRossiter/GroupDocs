@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
 const UpdateDocument = (props) => {
     
@@ -20,6 +20,7 @@ const UpdateDocument = (props) => {
             console.log(res.data);
             setTitle(res.data.title);
             setBody(res.data.body);
+            console.log(id);
         })
         .catch((err) => console.log(err));
     }, []);
@@ -43,23 +44,38 @@ const UpdateDocument = (props) => {
         });
     }
 
+    const deleteDocument = () => {
+        // with the user document id, deletes the user document
+        console.log("I made it this far");
+        axios.delete(`http://localhost:8000/api/document/${id}`, {withCredentials: true})
+        .then(res => {
+            console.log(res);
+            navigate('/dashboard');
+        })
+        .catch(err => {console.log(err)})
+    }
+
     return (
-        <div className="display-container">
-            <div className="blog-container blog-single">
-                <h1>Update Your Blog!</h1>
-                {errors.map((err, index) => <p key={index} className="errors">{err}</p>)}
-                <form onSubmit={onSubmitHandler} className="login-form">
-                    <div className='form-row'>
-                        <label>Title</label>
-                        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
+        <div className='background'>
+            <form onSubmit={onSubmitHandler} className="login-form">
+                <div className='navbar-container'>
+                    <div className='navbar'>
+                        <div className='nav-left'>
+                            <Link to={"/"}><h2 className='logo'>GroupDocs</h2></Link>
+                            <input type="text" value={title} className='title-input' onChange={(e) => setTitle(e.target.value)}/>
+                        </div>
+                        <div className='link-container'>
+                        <input type="submit" className='submit-btn' value="Save"/>
+                        <button className='delete-btn' onClick={deleteDocument()}>Delete</button>
                     </div>
-                    <div className='form-row'>
-                        <label>Body</label>
-                        <textarea rows="15" value={body} onChange={(e) => setBody(e.target.value)}/>
                     </div>
-                    <input type="submit" className='submit-btn'/>
+                </div>
+                <div className='writing-container'>
+                    {errors.map((err, index) => <p key={index} className="error">{err}</p>)}
+                    <p>{id}</p>
+                    <textarea rows="15" value={body} onChange={(e) => setBody(e.target.value)}/>
+                </div>
                 </form>
-            </div>
         </div>
     )
 } 
