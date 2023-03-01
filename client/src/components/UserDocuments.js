@@ -21,19 +21,7 @@ const UserDocuments = (props) => {
     }, []
     )
 
-    const deleteDocument = (_id) => {
-        // with the user document id, deletes the user document
-        axios.delete(`http://localhost:8000/api/document/${_id}`, {withCredentials: true})
-        .then(res => {
-            console.log(res);
-            axios.post('http://localhost:8000/api/document/creator', {}, {withCredentials: true})
-            .then(res => {
-                setDocumentList(res.data);
-            })
-            .catch((err) => {console.log(err);})
-        })
-        .catch(err => {console.log(err)})
-    }
+
 
     return (
         <div className="">
