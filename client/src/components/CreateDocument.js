@@ -35,7 +35,7 @@ const CreateDocument = (props) => {
                 <div className='navbar-container'>
                     <div className='navbar'>
                         <div className='nav-left'>
-                            <Link to={"/"}><h2 className='logo'>GroupDocs</h2></Link>
+                            <Link to={"/dashboard"}><h2 className='logo'>GroupDocs</h2></Link>
                             <input type="text" value={title} className='title-input' onChange={(e) => setTitle(e.target.value)}/>
                         </div>
                         <div className='link-container'>

@@ -61,18 +61,17 @@ const UpdateDocument = (props) => {
                 <div className='navbar-container'>
                     <div className='navbar'>
                         <div className='nav-left'>
-                            <Link to={"/"}><h2 className='logo'>GroupDocs</h2></Link>
+                            <Link to={"/dashboard"}><h2 className='logo'>GroupDocs</h2></Link>
                             <input type="text" value={title} className='title-input' onChange={(e) => setTitle(e.target.value)}/>
                         </div>
                         <div className='link-container'>
                         <input type="submit" className='submit-btn' value="Save"/>
-                        <button className='delete-btn' onClick={deleteDocument()}>Delete</button>
+                        <button className='delete-btn' onClick={deleteDocument}>Delete</button>
                     </div>
                     </div>
                 </div>
                 <div className='writing-container'>
                     {errors.map((err, index) => <p key={index} className="error">{err}</p>)}
-                    <p>{id}</p>
                     <textarea rows="15" value={body} onChange={(e) => setBody(e.target.value)}/>
                 </div>
                 </form>
