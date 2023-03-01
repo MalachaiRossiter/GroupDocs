@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import io from 'socket.io-client';
 
 const CreateDocument = (props) => {
     
@@ -9,8 +10,21 @@ const CreateDocument = (props) => {
     const [errors, setErrors] = useState([]);
 
     const navigate = useNavigate();
+    const socket = io('http://localhost:8000');
 
-        // submit handler takes credentials and body of from and sends axios request to create blog
+    useEffect(() => {
+        socket.on('updateNewBody', (newBody) => {
+            setBody(newBody);
+        });
+    }, []);
+
+    const onBodyChange = (e) => {
+        setBody(e.target.value);
+        socket.emit('changeBody', e.target.value);
+        console.log("Cleared");
+    }
+
+    // submit handler takes credentials and body of from and sends axios request to create document
     const onSubmitHandler = (e) => {
         e.preventDefault();
             axios.post(`http://localhost:8000/api/document`, {title, body}, {withCredentials: true})
@@ -45,7 +59,7 @@ const CreateDocument = (props) => {
                 </div>
                 <div className='writing-container'>
                     {errors.map((err, index) => <p key={index} className="error">{err}</p>)}
-                        <textarea rows="15" value={body} onChange={(e) => setBody(e.target.value)}/>
+                        <textarea rows="15" value={body} onChange={onBodyChange}/>
                 </div>
                 </form>
         </div>

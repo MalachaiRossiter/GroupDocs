@@ -6,13 +6,12 @@ const UpdateDocument = (props) => {
     
     const {id} = useParams();
 
-    const {loggedIn} = props;
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
-
     const [errors, setErrors] = useState([]);
 
     const navigate = useNavigate();
+    const socket = io('http://localhost:8000');
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/document/${id}`)
@@ -24,6 +23,18 @@ const UpdateDocument = (props) => {
         })
         .catch((err) => console.log(err));
     }, []);
+
+    useEffect(() => {
+        socket.on('updateNewBody', (newBody) => {
+            setBody(newBody);
+        });
+    }, []);
+
+    const onBodyChange = (e) => {
+        setBody(e.target.value);
+        socket.emit('changeBody', e.target.value);
+        console.log("Cleared");
+    }
 
     const onSubmitHandler = (e) => {
         // Sends axios request with form body and cookie to the update blog controller
@@ -72,7 +83,7 @@ const UpdateDocument = (props) => {
                 </div>
                 <div className='writing-container'>
                     {errors.map((err, index) => <p key={index} className="error">{err}</p>)}
-                    <textarea rows="15" value={body} onChange={(e) => setBody(e.target.value)}/>
+                    <textarea rows="15" value={body} onChange={onBodyChange}/>
                 </div>
                 </form>
         </div>
