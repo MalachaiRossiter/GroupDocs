@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import io from 'socket.io-client';
+import socket from './socket';
 
 const CreateDocument = (props) => {
     
@@ -10,7 +10,6 @@ const CreateDocument = (props) => {
     const [errors, setErrors] = useState([]);
 
     const navigate = useNavigate();
-    const socket = io('http://localhost:8000');
 
     useEffect(() => {
         socket.on('updateNewBody', (newBody) => {
